@@ -1,6 +1,6 @@
 import os
 from src.NER.logging import logger
-from src.NER.entity import DataIngestionConfig
+from src.NER.entity import DataIngestionConfig, DataValidationConfig
 from src.NER.utils.common import read_yaml, create_directories
 from src.NER.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 
@@ -26,3 +26,17 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config_yaml.data_validation
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            STATUS_FILE=config.STATUS_FILE,
+            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES
+        )
+
+        return data_validation_config
+
+
