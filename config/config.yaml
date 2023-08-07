@@ -11,6 +11,10 @@ data_validation:
   STATUS_FILE: artifacts/data_validation/status.txt
   ALL_REQUIRED_FILES: ["test.txt", "train.txt", "valid.txt"]
 
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path:  artifacts/data_ingestion/conll2003
+  model_ckpt: distilbert-base-cased
 
 
 
