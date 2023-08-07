@@ -1,0 +1,8 @@
+COLUMNS:
+  Sentence: str
+  Word: str
+  POS: str
+  Tag: str
+
+
+

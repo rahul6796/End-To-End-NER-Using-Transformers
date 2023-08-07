@@ -2,14 +2,16 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://github.com/rahul6796/datasets1/blob/main/conll2003.zip
-  local_data_file: artifacts/data_ingestion/data.zip
+  source_URL: https://github.com/rahul6796/datasets1/blob/main/archive.zip
+  local_data_file: artifacts/data_ingestion/ner_dataset.zip
   unzip_dir: artifacts/data_ingestion
 
 data_validation:
   root_dir: artifacts/data_validation
+  unzip_data_dir: artifacts/data_ingestion/ner_datasetreference.csv
   STATUS_FILE: artifacts/data_validation/status.txt
-  ALL_REQUIRED_FILES: ["test.txt", "train.txt", "valid.txt"]
+
+
 
 data_transformation:
   root_dir: artifacts/data_transformation
