@@ -15,7 +15,13 @@ class DataIngestionConfig:
 class DataValidationConfig:
     root_dir: Path
     STATUS_FILE: str
-    unzip_data_dir: Path
-    all_schema: dict
+    ALL_FILE_NAME: list
+
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: str
+    tokenizer_name: str
 
 

@@ -1,6 +1,6 @@
 import os
 from src.NER.logging import logger
-from src.NER.entity import DataIngestionConfig, DataValidationConfig
+from src.NER.entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 from src.NER.utils.common import read_yaml, create_directories
 from src.NER.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH, SCHEMA_FILE_PATH
 
@@ -37,10 +37,18 @@ class ConfigurationManager:
         data_validation_config = DataValidationConfig(
             root_dir=config.root_dir,
             STATUS_FILE=config.STATUS_FILE,
-            unzip_data_dir=config.unzip_data_dir,
-            all_schema=all_columns
+            ALL_FILE_NAME=config.ALL_FILE_NAME
         )
 
         return data_validation_config
 
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config_yaml.data_transformation
+        create_directories([config.root_dir])
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            tokenizer_name=config.tokenizer_name
+        )
 
+        return data_transformation_config
